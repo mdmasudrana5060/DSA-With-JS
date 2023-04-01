@@ -22,8 +22,12 @@ function reverseArray2(array) {
     let temp;
     while (a < b) {
         temp = array[a];
+        console.log(temp);
+
         array[a] = array[b];
+        console.log(array[a]);
         array[b] = temp;
+        console.log(array[b]);
         a++;
         b--;
     }
