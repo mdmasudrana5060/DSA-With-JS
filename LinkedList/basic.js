@@ -1,5 +1,4 @@
-let a = 10;
-console.log(a);
+
 
 class Node {
     constructor(data, next = null) {
@@ -85,15 +84,7 @@ class LinkedList {
         }
         return data;
     }
-    print() {
-        let data = this.head;
-        // ekhaneo data r moddhe this head save kora hoise jate head haraiya na jai;
-        while (data) {
-            console.log(data.value);
-            data = data.next;
-        }
 
-    }
     sum() {
         let sum = 0;
         let data = this.head;
@@ -119,21 +110,83 @@ class LinkedList {
         }
         return -1
     }
-
-    // find the matching value from fist and last
-
-    firstAndLastMatchingValue(targetValue) {
-        let array = [];
-        let length = this.length;
-        let index = 1;
+    // priniting data
+    print() {
         let data = this.head;
+        // ekhaneo data r moddhe this head save kora hoise jate head haraiya na jai;
         while (data) {
+            console.log(data.value);
+            data = data.next;
+        }
+
+    }
+    // jodi duplicate element thake tahole oi element er first index and last index khuje ber kore
+    firstAndLastIndexElement(targetValue) {
+        let data = this.head;
+        console.log(data.value);
+        let indices = [];
+        let index = 1;
+
+        while (data) {
+            if (data.value == targetValue) {
+                indices.push(index);
+
+            }
+            index++;
+            data = data.next
 
         }
+        console.log(indices[0], indices[indices.length - 1]);
+        return [indices[0], indices[indices.length - 1]]
+
+
+    }
+    // same as firstAndLastIndexElement
+    firstAndLastIndex(targetValue) {
+        let first = null;
+        let last = null;
+        let data = this.head;
+        console.log(data.value);
+        for (let i = 1; i < this.length; i++) {
+
+            if (data.value == targetValue) {
+                if (first == null) {
+                    first = i;
+                }
+                else {
+                    last = i
+                }
+                data = data.next;
+            }
+            else {
+                data = data.next;
+            }
+
+        }
+        return [first, last]
+    };
+    // middle node
+    middleNode() {
+        let slow_ptr = this.head;
+        let fast_ptr = this.head;
+        while (fast_ptr != null &&
+            fast_ptr.next != null) {
+            fast_ptr = fast_ptr.next.next;
+            slow_ptr = slow_ptr.next;
+        }
+        return slow_ptr.value;
+
+
+
 
 
 
     }
+
+
+
+
+
 
 }
 
@@ -145,17 +198,18 @@ list.insert(20);
 list.prepend(10);
 
 list.append(50)
+
 list.append(60)
-list.append(20)
 list.append(70)
 list.appendAtAnyPosition(1.5, 1);
 
 
-list.print(); console.log(list.length);
+console.log(list.firstAndLastIndexElement(20));
+console.log(list.firstAndLastIndex(20));
+console.log(list.middleNode());
+list.print();
 list.sum();
-list.firstAndLastMatchingValue();
-console.log(list.sum());
-console.log('index ' + list.matchingValue(200));
 
+console.log(list);
 
 
