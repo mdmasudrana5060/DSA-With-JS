@@ -1,6 +1,7 @@
 let s = "God Ding";
 function reverseWord(s) {
     let split = s.split(' ');
+    console.log(split);
     let reverseString = '';
     console.log(split);
     for (let i = 0; i < split.length; i++) {
